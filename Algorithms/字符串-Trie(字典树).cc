@@ -5,7 +5,7 @@ using namespace std;
 const int maxn=1000000; 
 
 int tr[maxn][26], exs[maxn|1], tc, mrk='a';  // switch the mrk to satisfy your request
-inline void tadd(const char *s, int len) {  // use strlen or some method to calculate the length of string first.
+void tadd(const char *s, int len) {  // use strlen or some method to calculate the length of string first.
     int p=0; 
     for(int i=0; i<=len-1; i++) { 
         int c=s[i]-mrk; 
@@ -14,12 +14,12 @@ inline void tadd(const char *s, int len) {  // use strlen or some method to calc
     } 
     exs[p]++; 
 }  /*
-inline void tadd(string s) {  // if you use std::string, you can merely change the structre of the insertion function. 
+void tadd(string s) {  // if you use std::string, you can merely change the structre of the insertion function. 
     int p=0, len=(int)s.length(); 
     // same as the upward.
 }  */ 
 
-inline void tfind(char *s, int len) {  // if you use std::string, you can change the structre which is like tadd.
+void tfind(char *s, int len) {  // if you use std::string, you can change the structre which is like tadd.
     int p=0; 
     for (int i=0; i<=len-1; i++) { 
         int c=s[i]-mrk; 

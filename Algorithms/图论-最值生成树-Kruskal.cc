@@ -8,7 +8,7 @@ const int maxn=1000000;
 int n, m, ec; 
 
 struct edg{int fr, to, v; } e[maxn<<3|15]; 
-inline void eadd(int a, int b, int c) { 
+void eadd(int a, int b, int c) { 
     e[++ec].fr=a; 
     e[ec].to=b; 
     e[ec].v=c; 

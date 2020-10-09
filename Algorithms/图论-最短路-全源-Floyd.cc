@@ -12,11 +12,11 @@ int n, m;
 
 int g[maxn|1][maxn|1]; 
 
-inline void floyd() { 
+void floyd() { 
     for(int p=1; p<=n; p++) for(int i=1; i<=n; i++) for(int j=1; j<=n; j++) if(g[i][j]>g[i][p]+g[p][j]) g[i][j]=g[i][p]+g[p][j]; 
 } 
 
-inline void init() { 
+void init() { 
     memset(g, inf, sizeof(g)); 
     for(int i=1; i<=n; i++) g[i][i]=0; 
 } 

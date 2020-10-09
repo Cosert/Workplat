@@ -21,7 +21,7 @@ ll inv(ll a, ll b, ll mo) {
     return ((x%mo)+mo)%mo; 
 } 
 
-inline void precrt() { 
+void precrt() { 
     ctot=1; 
     for(int i=1; i<=nc; i++) ctot*=crtni[i]; 
     for(int i=1; i<=nc; i++) crtni[i]=((ctot/crtni[i]) * inv(ctot/crtni[i], crtni[i], ctot)) % ctot; 
