@@ -59,24 +59,25 @@ inline void solve() {
 
 
 int main() { 
-    int Samples=    1   ; 
+    int Samples=  1  ; 
+    int Cases=  1  ; 
 #ifndef ONLINE_JUDGE
-    freopen("c.in", "r", stdin); 
-     ri(Samples); 
+    char _tes[]=__FILE__; int _tl=(int)strlen(_tes); _tes[_tl-2]='i', _tes[_tl-1]='n'; freopen(_tes, "r", stdin); 
+    if(Samples) ri(Samples); 
 #endif
-    
+    if(!Samples) Samples=1; 
     //init(); 
     
-
+    
     while(Samples--) { 
-        int Cases= 1; 
-         ri(Cases); 
+        if(Cases) ri(Cases); 
+        else Cases=1; 
 
         for(int tcs=1; tcs<=Cases; tcs++) { 
             
             init(); 
             solve(); 
-        }
+        } 
         if(Samples) putchar('\n'); 
     } 
     
@@ -84,14 +85,16 @@ int main() {
     return 0; 
 } 
 
-/*// For interactive problem
+// For interactive problem
+ #define main fakemain
+
 int main() { 
     
     
     
     init(); 
     solve(); 
-
+    
     return 0; 
 } 
 

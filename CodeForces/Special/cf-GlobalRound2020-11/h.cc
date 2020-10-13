@@ -47,20 +47,13 @@ int n, m;
 
 
 inline void init() { 
-    ri(n); 
+    
 } 
 
 
 
 inline void solve() { 
-    if(n==2) pstr("2\n1 2"); 
-    else if(n==3) pstr("2\n2 3\n1 3"); 
-    else { 
-        wo(2); 
-        wo(n, 2), wo(n-2); 
-        wo(n-1, 2), wo(n-1); 
-        rvrng(i, n-1, 3) wo(i, 2), wo(i-2); 
-    } 
+    
 } 
 
 
@@ -68,7 +61,7 @@ inline void solve() {
 int main() { 
     int Samples=    1   ; 
 #ifndef ONLINE_JUDGE
-    freopen("c.in", "r", stdin); 
+    freopen("h.in", "r", stdin); 
      ri(Samples); 
 #endif
     

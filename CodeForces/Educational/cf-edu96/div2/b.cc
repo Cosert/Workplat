@@ -40,20 +40,28 @@ using namespace std;
 
 const int inf=0x3f3f3f3f; 
 const ll mod=998244353; 
-
+const int maxn=2e5; 
 
 int n, m; 
 
-
+int li[maxn|1]; 
 
 inline void init() { 
-    
+    ri(n); 
+    ri(m); 
+    rep(i, n) ri(li[i]); 
 } 
 
 
 
 inline void solve() { 
-    
+    sort(li+1, li+n+1); 
+    m=min(n-1, m); 
+
+    ull ans=li[n]; 
+    rvrng(i, n-1, n-m) ans+=li[i]; 
+
+    wo(ans); 
 } 
 
 

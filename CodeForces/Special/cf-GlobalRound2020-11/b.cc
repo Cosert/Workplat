@@ -40,20 +40,69 @@ using namespace std;
 
 const int inf=0x3f3f3f3f; 
 const ll mod=998244353; 
-
+const int maxn=1e5; 
 
 int n, m; 
 
-
+int la[maxn|1], ca=0; 
 
 inline void init() { 
-    
+    ri(n), ri(m); 
+    ca=0; 
 } 
 
 
 
 inline void solve() { 
+    if(n==1) { 
+        string c; rstr(c); 
+        if(c=="W") wo(1); 
+        else if(m) wo(1); 
+        else wo(0); 
+        return; 
+    } 
+    int comb=0, coml=0, sng=0, lb[2]={0}; 
+    bool flag=0, wyes=0; 
     
+    for(int c, i=1; i<=n; i++) { 
+        c=getchar(); 
+        if(c=='W') { 
+            if(!flag) { 
+                wyes ? la[++ca]=coml : lb[1]=coml; 
+                coml=0; 
+                sng++, flag=1; 
+            } 
+            else comb++; 
+            wyes=1; 
+        } 
+        else { 
+            flag=0; 
+            coml++; 
+        } 
+    } 
+    getchar(); 
+    wyes ? lb[0]=coml : lb[1]=coml; 
+
+    sort(la+1, la+ca+1); 
+
+    ll ans=sng+2*comb; 
+    rep(i, ca) { 
+        if(m>=la[i]) { 
+            m-=la[i]; 
+            ans+=la[i]*2+1; 
+        } 
+        else ans+=m*2, m=0; 
+    } 
+    if(m && lb[0]) { 
+        if(m>=lb[0]) { 
+            ans+=lb[0]*2; 
+            m-=lb[0]; 
+        } 
+        else ans+=m*2, m=0; 
+    } 
+    if(m && lb[1]) ans+=2*min(m, lb[1])-1+wyes; 
+
+    wo(ans); 
 } 
 
 
@@ -76,7 +125,7 @@ int main() {
             
             init(); 
             solve(); 
-        }
+        } 
         if(Samples) putchar('\n'); 
     } 
     

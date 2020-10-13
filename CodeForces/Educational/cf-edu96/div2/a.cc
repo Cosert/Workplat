@@ -40,20 +40,35 @@ using namespace std;
 
 const int inf=0x3f3f3f3f; 
 const ll mod=998244353; 
+const int maxn=1000; 
 
+int n; 
 
-int n, m; 
-
-
+int li[4]={0, 3, 5, 7}; 
+int ans[]={0, 0, 0, 0}; 
 
 inline void init() { 
-    
+    ri(n); 
+    rep(i, 3) ans[i]=0; 
 } 
 
-
+bool dfs(int i, int m) { 
+    ans[i]++; 
+    if(!(m-li[i])) return 1; 
+    if(m-li[i]<0) { 
+        ans[i]--; 
+        return 0; 
+    } 
+    m-=li[i]; 
+    rep(j, 3) if(dfs(j, m)) return 1; 
+    
+    ans[i]--; 
+    return 0; 
+} 
 
 inline void solve() { 
-    
+    if(dfs(0, n)) rep(i, 3) wo(ans[i], 1+(i<3)); 
+    else wo(-1); 
 } 
 
 

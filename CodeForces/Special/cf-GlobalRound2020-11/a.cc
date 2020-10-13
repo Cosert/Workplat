@@ -44,40 +44,40 @@ const ll mod=998244353;
 
 int n, m; 
 
-int li[51]; 
-priority_queue<int, vector<int>, greater<int> > q1; 
-priority_queue<int, vector<int>, less<int> > q2; 
+
 
 inline void init() { 
-   ri(n); 
+    ri(n); 
 } 
 
-
+void putq(priority_queue<int, vector<int>, less<int> >& a) { 
+    while(!a.empty()) { 
+        wo(a.top(), 2); 
+        a.pop(); 
+    } 
+} 
 
 inline void solve() { 
-    int sum=0; 
+    priority_queue<int, vector<int>, less<int> > q1, q2; 
+    int sum=0, zero=0; 
     rep(i, n) { 
-        ri(li[i]), sum+=li[i]; 
-        if(li[i]>0) q1.push(li[i]); 
-        else q2.push(li[i]); 
+        ri(m); 
+        sum+=m; 
+        if(!m) { 
+            zero++; 
+            continue; 
+        } 
+        m>0 ? q1.push(m) : q2.push(m); 
     } 
+
     if(!sum) { 
         pstr("NO"); 
-        while(!q1.empty()) q1.pop(); 
-        while(!q2.empty()) q2.pop(); 
         return; 
     } 
-
+    
     pstr("YES"); 
-
-    while(!q1.empty()) { 
-        wo(q1.top(), 2); 
-        q1.pop(); 
-    } 
-    while(!q2.empty()) { 
-        wo(q2.top(), 2); 
-        q2.pop(); 
-    } 
+    rep(i, zero) sum>0 ? q2.push(0) : q1.push(0); 
+    sum>0 ? putq(q1), putq(q2) : putq(q2), putq(q1); 
     putchar('\n'); 
 } 
 
