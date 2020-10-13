@@ -14,13 +14,12 @@ bool rstr(std::string &_var, bool _ed=0){ _var.clear(); auto _ch=getchar(); whil
 void pstr(std::string _var, int _nline=1){ unsigned long long _len=_var.length(), _it=0; while(++_it<=_len) putchar(_var[_it-1]); 
     if(_nline) putchar(_nline==1?'\n':' '); } 
 
-#define mcs() for(int Case=ri(Case), tcs=1; tcs<=Case; tcs++)
 #define eofi(_tmp) while(scanf("%d", &_tmp)!=EOF)
 #define eofl(_tmp) while(scanf("%lld", &_tmp)!=EOF)
 
 using namespace std; 
 
-#define ld long double
+#define Ld long double
 #define ll long long
 #define ull unsigned long long
 #define pii pair<int, int>
@@ -31,8 +30,11 @@ using namespace std;
 #define pil pair<int, long long>
 #define pll pair<long long, long long>
 
+#define rng(_tmp, _st, _ed) for(int _tmp=_st; _tmp<=_ed; _tmp++)
+#define rvrng(_tmp, _st, _ed) for(int _tmp=_st; _tmp>=_ed; _tmp--)
+#define rep(_tmp, _ti) for(int _tmp=1; _tmp<=_ti; _tmp++)
 #define all(_tmp) _tmp.begin(),_tmp.end()
-#define rvall(_tmp) _tmp.begin(),_tmp.end()
+#define rvall(_tmp) _tmp.rbegin(),_tmp.rend()
 #define lc(_tmp) _tmp<<1
 #define rc(_tmp) _tmp<<1|1
 
@@ -41,6 +43,7 @@ const ll mod=998244353;
 
 
 int n, m; 
+
 
 
 inline void init() { 
@@ -56,27 +59,42 @@ inline void solve() {
 
 
 int main() { 
-    int Samples=    1   ; 
+    int Samples=  1  ; 
+    int Cases=  1  ; 
 #ifndef ONLINE_JUDGE
-    freopen("d2.in", "r", stdin); 
-    if(    1    ) ri(Samples); 
+    char _tes[]=__FILE__; int _tl=(int)strlen(_tes); _tes[_tl-2]='i', _tes[_tl-1]='n'; freopen(_tes, "r", stdin); 
+    if(Samples) ri(Samples); 
 #endif
-
-    
+    if(!Samples) Samples=1; 
     //init(); 
     
-    int Cases= 1; 
-     Cases= ri(Cases); 
     
-    while(Samples--)
-    for(int tcs=1; tcs<=Cases; tcs++) { 
-        
-        init(); 
-        solve(); 
+    while(Samples--) { 
+        if(Cases) ri(Cases); 
+        else Cases=1; 
+
+        for(int tcs=1; tcs<=Cases; tcs++) { 
+            
+            init(); 
+            solve(); 
+        } 
+        if(Samples) putchar('\n'); 
     } 
+    
 
     return 0; 
 } 
 
+// For interactive problem
+ #define main fakemain
 
+int main() { 
+    
+    
+    
+    init(); 
+    solve(); 
+    
+    return 0; 
+} 
 

@@ -47,6 +47,7 @@ int n, m;
 bool mp[101]; 
 
 inline void init() { 
+    mp[0]=0; 
     rep(i, 100) mp[i]=0; 
     ri(n); ri(m); 
 } 
@@ -64,11 +65,10 @@ inline void solve() {
         } 
     } 
 
+    //wo(cnt, 2), wo(m); 
     if(m==1) wo(cnt==1? 1 : -1); 
     else if(cnt<=m) wo(1); 
-    else if(m>cnt/2) wo(2); 
-    else wo(cnt/(m-1)); 
-    
+    else wo((cnt-1)%(m-1)==0 ? (cnt-1)/(m-1) : (cnt-1)/(m-1)+1); 
 } 
 
 

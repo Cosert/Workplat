@@ -42,6 +42,7 @@ const int inf=0x3f3f3f3f;
 const ll mod=998244353; 
 
 
+int n, m; 
 
 
 
