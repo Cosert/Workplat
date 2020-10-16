@@ -34,65 +34,67 @@ using namespace std;
 #define rvrng(_tmp, _st, _ed) for(int _tmp=_st; _tmp>=_ed; _tmp--)
 #define rep(_tmp, _ti) for(int _tmp=1; _tmp<=_ti; _tmp++)
 #define all(_tmp) _tmp.begin(),_tmp.end()
-#define rvall(_tmp) _tmp.begin(),_tmp.end()
+#define rvall(_tmp) _tmp.rbegin(),_tmp.rend()
 #define lc(_tmp) _tmp<<1
 #define rc(_tmp) _tmp<<1|1
 
 const int inf=0x3f3f3f3f; 
 const ll mod=998244353; 
-const int maxn=3e5; 
+
 
 int n, m; 
-int cnt[3]; 
-vector<int> v; 
+
+
 
 inline void init() { 
-    v.clear(); 
-    cnt[0]=cnt[1]=cnt[2]=0; 
-    ri(n), ri(m); 
+    
 } 
 
 
 
 inline void solve() { 
-    queue<int> q; 
-    rep(i, n) { 
-        char a; a=(char)getchar(); 
-        if(a=='?') a='2'; 
-        q.push(a-'0'); 
-    } 
-    rep(i, m) { 
-        int a=q.front(); q.pop(); 
-        cnt[a]++; 
-        v.push_back(a); 
-    } 
     
-    if(cnt[])
 } 
 
 
 
 int main() { 
-    int Samples=    1   ; 
+    int Samples=  1  ; 
+    int Cases=  1  ; 
 #ifndef ONLINE_JUDGE
-    freopen("a.in", "r", stdin); 
-     ri(Samples); 
+    char _tes[]=__FILE__; int _tl=(int)strlen(_tes); _tes[_tl-2]='i', _tes[_tl-1]='n'; freopen(_tes, "r", stdin); 
+    if(Samples) ri(Samples); 
 #endif
-    
+    if(!Samples) Samples=1; 
     //init(); 
     
+    
+    while(Samples--) { 
+        if(Cases) ri(Cases); 
+        else Cases=1; 
 
-    int Cases= 1; 
-     ri(Cases); 
-
-    while(Samples--) 
-    for(int tcs=1; tcs<=Cases; tcs++) 
-    { 
-        
-        init(); 
-        solve(); 
+        for(int tcs=1; tcs<=Cases; tcs++) { 
+            
+            init(); 
+            solve(); 
+        } 
+        if(Samples) putchar('\n'); 
     } 
+    
 
+    return 0; 
+} 
+
+// For interactive problem
+ #define main fakemain
+
+int main() { 
+    
+    
+    
+    init(); 
+    solve(); 
+    
     return 0; 
 } 
 

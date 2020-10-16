@@ -14,9 +14,6 @@ bool rstr(std::string &_var, bool _ed=0){ _var.clear(); auto _ch=getchar(); whil
 void pstr(std::string _var, int _nline=1){ unsigned long long _len=_var.length(), _it=0; while(++_it<=_len) putchar(_var[_it-1]); 
     if(_nline) putchar(_nline==1?'\n':' '); } 
 
-#define eofi(_tmp) while(scanf("%d", &_tmp)!=EOF)
-#define eofl(_tmp) while(scanf("%lld", &_tmp)!=EOF)
-
 using namespace std; 
 
 #define Ld long double
@@ -40,58 +37,77 @@ using namespace std;
 
 const int inf=0x3f3f3f3f; 
 const ll mod=998244353; 
+const int maxn=1e5; 
 
+ll n, m; 
 
-int n, m; 
-
-
+ll li[maxn|1]; 
 
 inline void init() { 
-    
+    ri(n), ri(m); 
+    rep(i, n) ri(li[i]); 
 } 
 
 
 
 inline void solve() { 
-    
+    sort(li+1, li+n+1); 
+    ll ans=0; 
+    rvrng(i, n, 1) { 
+        ll cnt=0; 
+        rvrng(j, i, 1) { 
+            cnt++; 
+            if(cnt*li[j]>=m) { 
+                ans++; 
+                i=j; 
+                break; 
+            } 
+            if(j==1) i=j; 
+        } 
+    } 
+    wo(ans); 
 } 
 
 
 
 int main() { 
-    int Samples=    1   ; 
-#ifndef ONLINE_JUDGE
-    freopen("c.in", "r", stdin); 
-     ri(Samples); 
-#endif
+    int SAMP=0, TCS=0; 
+
+    SAMP=1; 
+    TCS=1; 
     
+#ifndef ONLINE_JUDGE
+    char _tes[]=__FILE__; int _tl=(int)strlen(_tes); _tes[_tl-2]='i', _tes[_tl-1]='n'; freopen(_tes, "r", stdin); 
+    if(SAMP) ri(SAMP); 
+#endif
+    if(!SAMP) SAMP=1; 
     //init(); 
     
-
-    while(Samples--) { 
-        int Cases= 1; 
-         ri(Cases); 
-
-        for(int tcs=1; tcs<=Cases; tcs++) { 
+    
+    while(SAMP--) { 
+        if(TCS) ri(TCS); 
+        for(int tcsn=1, tcs=TCS?TCS:1; tcsn<=tcs; tcsn++) { 
             
             init(); 
             solve(); 
-        }
-        if(Samples) putchar('\n'); 
+        } 
+        if(SAMP) putchar('\n'); 
     } 
     
-
+    
     return 0; 
 } 
 
-/*// For interactive problem
+// For interactive problem
+ #define main fakemain
+
 int main() { 
     
     
     
     init(); 
     solve(); 
-
+    
     return 0; 
 } 
 

@@ -34,51 +34,86 @@ using namespace std;
 #define rvrng(_tmp, _st, _ed) for(int _tmp=_st; _tmp>=_ed; _tmp--)
 #define rep(_tmp, _ti) for(int _tmp=1; _tmp<=_ti; _tmp++)
 #define all(_tmp) _tmp.begin(),_tmp.end()
-#define rvall(_tmp) _tmp.begin(),_tmp.end()
+#define rvall(_tmp) _tmp.rbegin(),_tmp.rend()
 #define lc(_tmp) _tmp<<1
 #define rc(_tmp) _tmp<<1|1
 
 const int inf=0x3f3f3f3f; 
 const ll mod=998244353; 
-
+const int maxn=1e5; 
 
 int n, m; 
 
-
+ll li[maxn|1]; 
 
 inline void init() { 
-    
+    ri(n); 
 } 
 
-
+bool cmp(ll a, ll b) {return abs(a)>abs(b); } 
 
 inline void solve() { 
+    bool ptv=0; 
+    rep(i, n) ri(li[i]), ptv=ptv|(li[i]>0); 
+
+    if(!ptv) { 
+        sort(li+1, li+n+1); 
+        wo(li[n]*li[n-1]*li[n-2]*li[n-3]*li[n-4]); 
+        return; 
+    } 
     
+    sort(li+1, li+n+1, cmp); 
+    
+    ll ans=(li[1]*li[2]*li[3]*li[4]*li[5]); 
+
+    rng(i, 6, n) rep(j, 5) { 
+        ll t=li[i]; 
+        rep(k, 5) if(k!=j) t*=li[k]; 
+        if(t>ans) ans=t; 
+    } 
+
+    wo(ans); 
 } 
 
 
 
 int main() { 
-    int Samples=    1   ; 
+    int Samples=  1  ; 
+    int Cases=  1  ; 
 #ifndef ONLINE_JUDGE
-    freopen("b.in", "r", stdin); 
-     ri(Samples); 
+    char _tes[]=__FILE__; int _tl=(int)strlen(_tes); _tes[_tl-2]='i', _tes[_tl-1]='n'; freopen(_tes, "r", stdin); 
+    if(Samples) ri(Samples); 
 #endif
-
+    if(!Samples) Samples=1; 
     //init(); 
+    
+    
+    while(Samples--) { 
+        if(Cases) ri(Cases); 
+        else Cases=1; 
 
-
-    int Cases= 1; 
-     ri(Cases); 
-
-    while(Samples--) 
-    for(int tcs=1; tcs<=Cases; tcs++) 
-    { 
-        
-        init(); 
-        solve(); 
+        for(int tcs=1; tcs<=Cases; tcs++) { 
+            
+            init(); 
+            solve(); 
+        } 
+        if(Samples) putchar('\n'); 
     } 
+    
 
+    return 0; 
+} 
+
+// For interactive problem
+ #define main fakemain
+
+int main() { 
+    
+    
+    
+    init(); 
+    solve(); 
+    
     return 0; 
 } 
 
