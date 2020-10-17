@@ -37,20 +37,51 @@ using namespace std;
 
 const int inf=0x3f3f3f3f; 
 const ll mod=998244353; 
-
+const int maxn=1e5; 
 
 int n, m; 
 
-
+int li[maxn|1], lp[maxn|1]; 
+vector<pii> v; vector<int> q; 
 
 inline void init() { 
-    
+    ri(n); 
+    rep(i, n) ri(li[i]); 
 } 
 
 
 
 inline void solve() { 
+    int cnt=n; 
+    rvrng(i, n, 1) { 
+        if(li[i]==1) { 
+            lp[i]=cnt--; 
+            v.push_back((pii){lp[i], i}); 
+            q.push_back(i); 
+        } 
+        else if(li[i]==2) { 
+            if(q.empty()) { 
+                wo(-1); 
+                return; 
+            } 
+            lp[i]=lp[q[q.size()-1]]; 
+            q.pop_back(); 
+            v.push_back((pii){lp[i], i}); 
+        } 
+    } 
+    rep(i, n) if(li[i]==2) q.push_back(i); 
+    sort(all(q)); 
     
+    rvrng(i, n, 1) if(li[i]==3) { 
+        if(q[q.size()-1]<i || q.empty()) { 
+            wo(-1); 
+            return; 
+        } 
+        v.push_back((pii){cnt, i}), v.push_back((pii){cnt, q[q.size()-1]}); 
+        cnt--; 
+        q.pop_back(); 
+    } 
+    rep(i, n) wo(v[i-1], 2); 
 } 
 
 
@@ -59,7 +90,7 @@ int main() {
     int SAMP=0, TCS=0; 
 
     SAMP=1; 
-    TCS=1; 
+    
     
 #ifndef ONLINE_JUDGE
     char _tes[]=__FILE__; int _tl=(int)strlen(_tes); _tes[_tl-2]='i', _tes[_tl-1]='n'; freopen(_tes, "r", stdin); 

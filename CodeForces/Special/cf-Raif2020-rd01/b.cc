@@ -44,13 +44,26 @@ int n, m;
 
 
 inline void init() { 
-    
+    ri(n); 
 } 
 
 
 
 inline void solve() { 
-    
+    string s; rstr(s); 
+    int ans=n, l=0, k=0, r=0; 
+    rep(i, n) { 
+        if(s[i-1]=='<') l++; 
+        else if(s[i-1]=='-') k++; 
+        else if(s[i-1]=='>') r++; 
+    } 
+    if(l+k==n || r+k==n) wo(n); 
+    else { 
+        rep(i, n) { 
+            if(s[i-1]!='-') if(s[i%n]!='-') ans--; 
+        } 
+        wo(ans); 
+    } 
 } 
 
 
@@ -95,4 +108,4 @@ int main() {
     
     return 0; 
 } 
-
+ 

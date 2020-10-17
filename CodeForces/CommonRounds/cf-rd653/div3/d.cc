@@ -14,9 +14,6 @@ bool rstr(std::string &_var, bool _ed=0){ _var.clear(); auto _ch=getchar(); whil
 void pstr(std::string _var, int _nline=1){ unsigned long long _len=_var.length(), _it=0; while(++_it<=_len) putchar(_var[_it-1]); 
     if(_nline) putchar(_nline==1?'\n':' '); } 
 
-#define eofi(_tmp) while(scanf("%d", &_tmp)!=EOF)
-#define eofl(_tmp) while(scanf("%lld", &_tmp)!=EOF)
-
 using namespace std; 
 
 #define Ld long double
@@ -40,58 +37,74 @@ using namespace std;
 
 const int inf=0x3f3f3f3f; 
 const ll mod=998244353; 
-
+const int maxn=2e5; 
 
 int n, m; 
 
 
-
 inline void init() { 
-    
+    ri(n), ri(m); 
 } 
 
 
 
 inline void solve() { 
-    
+    ll ans=0; 
+    unordered_map<int, int> mp; 
+    rep(i, n) { 
+        int a, x, p; ri(a); 
+        if(a%m==0) continue; 
+        
+        p=mp[m-a%m]; 
+        if(!p) x=m-a+1; 
+        else x=m-a+p*m+1; 
+        
+        if(x>ans) ans=x; 
+        mp[m-a]++; 
+    } 
+    wo(ans); 
 } 
 
 
 
 int main() { 
-    int Samples=    1   ; 
-#ifndef ONLINE_JUDGE
-    freopen("d.in", "r", stdin); 
-     ri(Samples); 
-#endif
+    int SAMP=0, TCS=0; 
+
+    SAMP=1; 
+    TCS=1; 
     
+#ifndef ONLINE_JUDGE
+    char _tes[]=__FILE__; int _tl=(int)strlen(_tes); _tes[_tl-2]='i', _tes[_tl-1]='n'; freopen(_tes, "r", stdin); 
+    if(SAMP) ri(SAMP); 
+#endif
+    if(!SAMP) SAMP=1; 
     //init(); 
     
-
-    while(Samples--) { 
-        int Cases= 1; 
-         ri(Cases); 
-
-        for(int tcs=1; tcs<=Cases; tcs++) { 
+    
+    while(SAMP--) { 
+        if(TCS) ri(TCS); 
+        for(int tcsn=1, tcs=TCS?TCS:1; tcsn<=tcs; tcsn++) { 
             
             init(); 
             solve(); 
-        }
-        if(Samples) putchar('\n'); 
+        } 
+        if(SAMP) putchar('\n'); 
     } 
     
-
+    
     return 0; 
 } 
 
-/*// For interactive problem
+// For interactive problem
+ #define main fakemain
+
 int main() { 
     
     
     
     init(); 
     solve(); 
-
+    
     return 0; 
 } 
 

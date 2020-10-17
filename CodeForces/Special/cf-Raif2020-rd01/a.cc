@@ -39,18 +39,21 @@ const int inf=0x3f3f3f3f;
 const ll mod=998244353; 
 
 
-int n, m; 
+int n, m, x, y; 
 
 
 
 inline void init() { 
-    
+    ri(n), ri(m), ri(x), ri(y); 
 } 
 
 
 
 inline void solve() { 
-    
+    if(x==n && y==m) wo(0); 
+    else if(x==n) wo(abs(m-y)); 
+    else if(y==m) wo(abs(n-x)); 
+    else wo(abs(n-x)+abs(m-y)+2); 
 } 
 
 

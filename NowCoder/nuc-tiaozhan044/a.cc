@@ -39,19 +39,23 @@ const int inf=0x3f3f3f3f;
 const ll mod=998244353; 
 
 
-int x, y, n; 
+int n, m; 
 
 
 
 inline void init() { 
-    ri(x), ri(y), ri(n); 
+    
 } 
 
 
 
 inline void solve() { 
-    int k=n%x; 
-    wo(k==y? n : (y<k? n-k+y : n-k-x+y)); 
+    ri(n); 
+    if(n<7) wo(0); 
+    else { 
+        wo(1); 
+        pstr("3 5 7"); 
+    } 
 } 
 
 
@@ -60,9 +64,9 @@ int main() {
     int SAMP=0, TCS=0; 
 
     SAMP=1; 
-    TCS=1; 
     
-#ifndef ONLINE_JUDGE
+    
+#ifdef LOCAL_TEST
     char _tes[]=__FILE__; int _tl=(int)strlen(_tes); _tes[_tl-2]='i', _tes[_tl-1]='n'; freopen(_tes, "r", stdin); 
     if(SAMP) ri(SAMP); 
 #endif
@@ -80,19 +84,6 @@ int main() {
         if(SAMP) putchar('\n'); 
     } 
     
-    
-    return 0; 
-} 
-
-// For interactive problem
- #define main fakemain
-
-int main() { 
-    
-    
-    
-    init(); 
-    solve(); 
     
     return 0; 
 } 

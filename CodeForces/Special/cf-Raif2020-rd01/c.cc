@@ -50,7 +50,16 @@ inline void init() {
 
 
 inline void solve() { 
-    
+    int c, l=0, r=0; 
+    while((c=getchar()) && c!='\n') { 
+        if(c=='A') l++; 
+        else { 
+            if(l) l--; 
+            else if(r) r--; 
+            else r++; 
+        } 
+    } 
+    wo(l+r); 
 } 
 
 
