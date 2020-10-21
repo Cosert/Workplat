@@ -33,7 +33,6 @@ const int inf=0x3f3f3f3f;
 const ll mod=1e9+7; 
 
 
-int n, m; 
 
 
 
@@ -44,7 +43,10 @@ inline void init() {
 
 
 inline void solve() { 
-    
+    ull n, m, a, b; 
+    ri(a), ri(b), ri(n), ri(m); 
+    if(n+m>a+b) psln("NO"); 
+    else psln(m<=min(a, b)?"YES":"NO"); 
 } 
 
 
