@@ -49,7 +49,7 @@ using namespace std;
 
 #define forto(_tmp, _st, _ed) for(long long _tmp=_st; _tmp<=_ed; _tmp++)
 #define fordn(_tmp, _st, _ed) for(long long _tmp=_st; _tmp>=_ed; _tmp--)
-#define rep(_tmp, _ti) for(unsigned long long _tmp=1; _tmp<=_ti; _tmp++)
+#define rep(_tmp, _ti) for(unsigned long long _tmp=1; _tmp<=(unsigned long long)_ti; _tmp++)
 #define all(_tmp) _tmp.begin(),_tmp.end()
 #define rvall(_tmp) _tmp.rbegin(),_tmp.rend()
 #define lc(_tmp) _tmp<<1
@@ -61,58 +61,72 @@ const ll mod=1e9+7;
 
 int n, m; 
 
+vector<pii> li; 
 
-
-inline void init() { 
-    
+inline bool init() { 
+    if(ri(m)) return 1; 
+    return 0; 
 } 
 
 
 
 inline void solve() { 
-    
+    n=1; 
+    li.push_back((pii){getchar(), 1}); 
+    bool flag=0; 
+    rep(i, m-1) { 
+        int c=getchar(); 
+        if(c=='1') { 
+            flag=1; 
+            continue; 
+        } 
+        if(c==li[n-2].first && !flag) li[n-2].second++; 
+        else { 
+            flag=0; 
+            li.push_back((pii){c, 1}); 
+        } 
+    } 
+        
+    int flag=0, mi=inf, ans=0; 
+    while(1) { 
+        flag=0; 
+        for(int i=0; i<=(int)li.size()-1; i++) { 
+            if(li[i].first=='2') { 
+                if(!flag) flag=1; 
+                else if(flag==2) flag=3; 
+                mi=min(mi, li[i].second); 
+            } 
+            if(li[i].first=='0') { 
+                if(flag==1) flag=2; 
+                else if(flag==3) flag=4; 
+                mi=min(mi, li[i].second); 
+            } 
+        } 
+        if(flag<4) break; 
+        ans+=mi; 
+        for(int i=0; i<4; i++) if(li[i].first!='1'){ 
+            if(li[i].second==mi) li.erase(li.begin()+i); 
+            else li[i].second-=mi; 
+        } 
+    } 
+        
+    wln(ans); 
+    getchar(); 
 } 
 
 
 
 int main() { 
-    int SAMP=1, TCS=0, FILEIN=0; 
-    
-    TCS=1; 
-    SAMP=0; 
-    FILEIN=1; 
+    int FILEIN=0; 
 #ifdef LOCAL_TEST
-    if(FILEIN==1) { char _tes[]=__FILE__; int _tl=(int)strlen(_tes); _tes[_tl-2]='i', _tes[_tl-1]='n'; (void)!freopen(_tes, "r", stdin); if(SAMP) ri(SAMP); } 
+    if(FILEIN==1) { char _tes[]=__FILE__; int _tl=(int)strlen(_tes); _tes[_tl-2]='i', _tes[_tl-1]='n'; (void)!freopen(_tes, "r", stdin); } 
 #endif
-    if(!SAMP) SAMP=1; 
     
     //init(); 
     
     
-    while(SAMP--) { 
-        if(TCS) ri(TCS); 
-        for(int tcsn=1, tcs=TCS?TCS:1; tcsn<=tcs; tcsn++) { 
-            
-            init(); 
-            solve(); 
-        } 
-        if(SAMP) putchar('\n'); 
-    } 
+    while(init()) solve(); 
     
     return 0; 
 } 
 
-// For interactive problem
- #define main fakemain
-
-int main() { 
-    
-    
-    
-    init(); 
-    solve(); 
-    
-    
-    
-    return 0; 
-} 

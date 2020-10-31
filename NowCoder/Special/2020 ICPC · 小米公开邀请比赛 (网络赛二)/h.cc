@@ -57,30 +57,39 @@ using namespace std;
 
 const int inf=0x3f3f3f3f; 
 const ll mod=1e9+7; 
+const int maxn=200000; 
 
+int n, m, wei[maxn|1]; 
 
-int n, m; 
-
-
+ll dp[maxn|1], val[maxn|1]; 
 
 inline void init() { 
-    
+    memset(dp, 0, sizeof(dp)); 
 } 
 
 
 
 inline void solve() { 
-    
+    ri(m); 
+    rep(i, n) { 
+        ri(wei[i]), ri(val[i]); 
+        if(wei[i]>m) i--, n--; 
+    } 
+    int mrk=0; 
+    rep(i, n) { 
+        if(m<wei[i]) continue; 
+        mrk=min(mrk+wei[i], m); 
+        fordn(j, mrk, wei[i]) dp[j]=dp[j]<dp[j-wei[i]]+val[i]? dp[j-wei[i]]+val[i] : dp[j]; 
+    } 
+    wln(dp[mrk]); 
 } 
 
 
 
 int main() { 
-    int SAMP=1, TCS=0, FILEIN=0; 
+    int SAMP=1, TCS=0, FILEIN=1; 
     
-    TCS=1; 
     SAMP=0; 
-    FILEIN=1; 
 #ifdef LOCAL_TEST
     if(FILEIN==1) { char _tes[]=__FILE__; int _tl=(int)strlen(_tes); _tes[_tl-2]='i', _tes[_tl-1]='n'; (void)!freopen(_tes, "r", stdin); if(SAMP) ri(SAMP); } 
 #endif
@@ -89,30 +98,11 @@ int main() {
     //init(); 
     
     
-    while(SAMP--) { 
-        if(TCS) ri(TCS); 
-        for(int tcsn=1, tcs=TCS?TCS:1; tcsn<=tcs; tcsn++) { 
-            
-            init(); 
-            solve(); 
-        } 
-        if(SAMP) putchar('\n'); 
+    while(ri(n)) { 
+        init(); 
+        solve(); 
     } 
     
     return 0; 
 } 
 
-// For interactive problem
- #define main fakemain
-
-int main() { 
-    
-    
-    
-    init(); 
-    solve(); 
-    
-    
-    
-    return 0; 
-} 

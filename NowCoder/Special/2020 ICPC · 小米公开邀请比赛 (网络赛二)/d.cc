@@ -59,12 +59,14 @@ const int inf=0x3f3f3f3f;
 const ll mod=1e9+7; 
 
 
-int n, m; 
+ll n, m; 
 
 
 
-inline void init() { 
-    
+inline bool init() { 
+    if(!ri(n)) return 0; 
+    ri(m); 
+    return 1; 
 } 
 
 
@@ -76,43 +78,16 @@ inline void solve() {
 
 
 int main() { 
-    int SAMP=1, TCS=0, FILEIN=0; 
-    
-    TCS=1; 
-    SAMP=0; 
-    FILEIN=1; 
+    int FILEIN=1; 
 #ifdef LOCAL_TEST
-    if(FILEIN==1) { char _tes[]=__FILE__; int _tl=(int)strlen(_tes); _tes[_tl-2]='i', _tes[_tl-1]='n'; (void)!freopen(_tes, "r", stdin); if(SAMP) ri(SAMP); } 
+    if(FILEIN==1) { char _tes[]=__FILE__; int _tl=(int)strlen(_tes); _tes[_tl-2]='i', _tes[_tl-1]='n'; (void)!freopen(_tes, "r", stdin); } 
 #endif
-    if(!SAMP) SAMP=1; 
     
     //init(); 
     
     
-    while(SAMP--) { 
-        if(TCS) ri(TCS); 
-        for(int tcsn=1, tcs=TCS?TCS:1; tcsn<=tcs; tcsn++) { 
-            
-            init(); 
-            solve(); 
-        } 
-        if(SAMP) putchar('\n'); 
-    } 
+    while(init()) solve(); 
     
     return 0; 
 } 
 
-// For interactive problem
- #define main fakemain
-
-int main() { 
-    
-    
-    
-    init(); 
-    solve(); 
-    
-    
-    
-    return 0; 
-} 
