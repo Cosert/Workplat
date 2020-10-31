@@ -33,31 +33,36 @@ const int inf=0x3f3f3f3f;
 const ll mod=1e9+7; 
 
 
-int n, m; 
+ll n, m, bx=1; 
 
 
 
 inline void init() { 
-    
+    ri(n), ri(m); 
 } 
 
 
 
 inline void solve() { 
-    
+    ll ans=0; 
+    if(n<=1) wln(1); 
+    else { 
+        if(n<=m) m=n-1, ans=1; 
+        wln(ans+((bx+m)*(m-bx+1))/2); 
+    } 
 } 
 
 
 
 int main() { 
     int SAMP=0, TCS=0; 
-
-    SAMP=1; 
+    
+    
     
     TCS=1; 
     
 #ifdef LOCAL_TEST
-    char _tes[]=__FILE__; int _tl=(int)strlen(_tes); _tes[_tl-2]='i', _tes[_tl-1]='n'; freopen(_tes, "r", stdin); if(SAMP) ri(SAMP); 
+    char _tes[]=__FILE__; int _tl=(int)strlen(_tes); _tes[_tl-2]='i', _tes[_tl-1]='n'; (void)!freopen(_tes, "r", stdin); if(SAMP) ri(SAMP); 
 #endif
     if(!SAMP) SAMP=1; 
     

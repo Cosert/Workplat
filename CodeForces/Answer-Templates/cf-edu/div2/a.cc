@@ -21,16 +21,16 @@ using namespace std;
 #define pil pair<int, long long>
 #define pll pair<long long, long long>
 
-#define rng(_tmp, _st, _ed) for(int _tmp=_st; _tmp<=_ed; _tmp++)
-#define rvrng(_tmp, _st, _ed) for(int _tmp=_st; _tmp>=_ed; _tmp--)
-#define rep(_tmp, _ti) for(int _tmp=1; _tmp<=_ti; _tmp++)
+#define forto(_tmp, _st, _ed) for(long long _tmp=_st; _tmp<=_ed; _tmp++)
+#define fordn(_tmp, _st, _ed) for(long long _tmp=_st; _tmp>=_ed; _tmp--)
+#define rep(_tmp, _ti) for(unsigned long long _tmp=1; _tmp<=_ti; _tmp++)
 #define all(_tmp) _tmp.begin(),_tmp.end()
 #define rvall(_tmp) _tmp.rbegin(),_tmp.rend()
 #define lc(_tmp) _tmp<<1
 #define rc(_tmp) _tmp<<1|1
 
 const int inf=0x3f3f3f3f; 
-const ll mod=1e9+7; 
+const long long mod=998244353; 
 
 
 int n, m; 
@@ -50,14 +50,13 @@ inline void solve() {
 
 
 int main() { 
-    int SAMP=0, TCS=0; 
-
-    SAMP=1; 
+    int SAMP=1, TCS=0; 
     
     TCS=1; 
+    SAMP=0; 
     
 #ifdef LOCAL_TEST
-    char _tes[]=__FILE__; int _tl=(int)strlen(_tes); _tes[_tl-2]='i', _tes[_tl-1]='n'; freopen(_tes, "r", stdin); if(SAMP) ri(SAMP); 
+    char _tes[]=__FILE__; int _tl=(int)strlen(_tes); _tes[_tl-2]='i', _tes[_tl-1]='n'; (void)!freopen(_tes, "r", stdin); if(SAMP) ri(SAMP); 
 #endif
     if(!SAMP) SAMP=1; 
     
