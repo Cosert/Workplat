@@ -1,31 +1,5 @@
-#pragma GCC optimize("O2")// #pragma GCC optimize("O3") // Activite it if OJ supports O3(HDU doesn't)
-//#include<bits/stdc++.h>
-#include<cstdio>
-#include<cctype>
-#include<cstring>
-#include<cassert>
-#include<cstdlib>
-#include<ctime>
-#include<cmath>
-#include<iostream>
-#include<iterator>
-#include<algorithm>
-#include<string>
-#include<bitset>
-#include<vector>
-#include<deque>
-#include<stack>
-#include<queue>
-#include<map>
-#include<set>
-#include<fstream>
-/*int absi(int _var) { return (_var ^ (_var>>31)) - (_var>>31); } 
-long long absl(long long _var) { return (_var ^ (_var>>63)) - (_var>>63); } 
-int maxi(int _var1, int _var2) { return (_var2 & ((_var1 - _var2) >> 31)) | (_var1 & (~(_var1 - _var2) >> 31)); }  
-int mini(int _var1, int _var2) { return (_var1 & ((_var1 - _var2) >> 31)) | (_var2 & (~(_var1 - _var2) >> 31)); } 
-void swpi(int &_var1, int &_var2) { _var1 ^= _var2 ^= _var1 ^= _var2; } 
-int intbit(int _var, int _iter_) { return (_var >> _iter_) & 1; }  */
-
+#pragma GCC optimize("O2")
+#include<bits/stdc++.h>
 template<typename _tp> bool ri(_tp &_var){ _var=0; bool _neg=0; auto _rd=getchar(); while(_rd<'0' || _rd>'9') { if(_rd=='-'){_neg=1; }else if(_rd==-1){return 0; } _rd=getchar(); } { while(_rd>='0' && _rd<='9') _var=_var*10 + (_tp)_rd-48, _rd=getchar(); } if(_neg) {_var*=-1; } return 1; } 
 template<typename _tp> void wo(_tp _var, int _nline=0){ static char _wri[64]; int _tpi=0; { if(_var<0)putchar('-'), _var*=-1; } do{ _wri[_tpi++] = (char)((_var%10)+48), _var/=10; } while(_var); { while(_tpi) putchar(_wri[--_tpi]); } if(_nline) putchar(_nline==1?'\n':' '); } 
 #define wln(_var) wo(_var, 1)
@@ -62,7 +36,7 @@ int n, m;
 
 
 
-const bool TEST=0, FILEIN=0; 
+const bool TEST=0, FILEIN=1; 
 inline bool carry(int& TCS) { 
     return TEST ? ri(TCS) : ri(n); 
 } 
