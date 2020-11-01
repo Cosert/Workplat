@@ -3,13 +3,13 @@
 
 const int maxn=4000000; 
 
-bitset<maxn|1> phi; int pri[maxn|1], pc=0; 
+bitset<maxn|1> phi; int pri[maxn|1], pcnt=0; 
 void prin() { 
     phi.set(); 
     phi[1]=0; 
     for(int i=2; i<=maxn; i++) { 
-        if(phi[i]) pri[++pc]=i; 
-        for(int j=1; j<=pc && pri[j]*i<=maxn; j++) { 
+        if(phi[i]) pri[++pcnt]=i; 
+        for(int j=1; j<=pcnt && pri[j]*i<=maxn; j++) { 
             phi[pri[j]*i]=0; 
             if(!(i%pri[j])) break; 
         } 
