@@ -35,7 +35,7 @@ int n, m;
 
 
 
-const bool TEST=1, FILEIN=1; 
+const bool TEST=1, FILEIN=0; 
 inline bool carry(int& TCS) { 
     return TEST ? ri(TCS) : ri(n); 
 } 
@@ -84,3 +84,4 @@ int main() {
     
     return 0; 
 } 
+
