@@ -31,7 +31,7 @@ const int inf=0x3f3f3f3f;
 const long long mod=1e9+7; 
 
 
-int n, m; 
+ull n, a, b, c, d; 
 
 
 
@@ -40,7 +40,9 @@ inline void init() {
 } 
 
 inline void solve(/*rda*/) { 
-    
+    wi(n), wi(a), wi(b), wi(c), wi(d); 
+    if(c+d<n*(a-b) || n*(a+b)<c-d) psln("No"); 
+    else psln("Yes"); 
 } 
 
 int main() { 
