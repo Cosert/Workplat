@@ -1,13 +1,20 @@
-import sys
+import sys; import math; 
+
+TESTYPE=1
 
 
-def solve() : 
+
+def solve(rla) : 
     
 
 while True : 
-    line=sys.stdin.readline()
-    if not line : break
-    for cas in range(int(line)) : 
-        solve()
+    rla=sys.stdin.readline()
+    cases=1
+    if not rla: break
+    if (rla=='\n')|(rla=='') : continue
+    if TESTYPE==1 : cases=int(rla)
+    for cas in range(cases) : 
+        
+        solve(rla)
     
 
