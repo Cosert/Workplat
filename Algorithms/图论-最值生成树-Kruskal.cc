@@ -1,3 +1,4 @@
+/*
 #include<cstdio>
 #include<cstring>
 #include<algorithm>
@@ -5,6 +6,7 @@ using namespace std;
 
 const int inf=0x3f3f3f3f; 
 const int maxn=1000000; 
+*/
 
 int n, m; // suppose n is the number of nodes
 

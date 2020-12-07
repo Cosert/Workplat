@@ -1,75 +1,63 @@
+
 #include<cstdio>
 #include<cstring>
 #include<algorithm>
 #include<vector>
 #include<queue>
-
+using namespace std; 
 #define pii pair<int, int>
 const int inf=0x3f3f3f3f; 
 const int maxn=1000000; 
 
-int n, m; 
 
-struct edg{int v, to, nx; } e[maxn<<3|15]; int hp[maxn|1], ec; 
-inline void eadd(int a, int b, int c) { 
-    e[ec].to=b; 
-    e[ec].v=c; 
-    e[ec].nx=hp[a]; 
-    hp[a]=ec++; 
-} 
+int n, m; // suppose n is the number of nodes
 
-priority_queue<pii, vector<pii>, greater<pii> > q; 
-int d[maxn|1]; 
-bool dijkstra(int s, int ed) { 
-    memset(d, -1, sizeof(d)); 
-    d[s]=0;  // start point
-    q.push((pii){0, s}); 
-    pii p; int &a=p.second; 
+struct edg{ 
+    int to, nx; int v; /* v can be the type you want */
+    friend bool operator<(const edg& a,const edg& b) {return a.v>b.v; } // change the condition for the different requirements
+} eli[maxn<<3|15]; 
+int eh[maxn|1], ecnt; 
+inline void eadd(int b, int a, int c) { eli[ecnt]=(edg){a, eh[b], c}; eh[b]=ecnt++; } // c=value, b=terminate point, a=start point
 
-    while(!q.empty()) { 
-        p=q.top(); q.pop(); 
+int d[maxn|1]; // d should be the same type as edg.v
+priority_queue<edg> dkq; 
+void dijkstra(int st, int ed) { 
+    memset(d, -1, sizeof(d)); d[st]=0; // start point
+    dkq.push((edg){st, 0, 0}); 
+    edg p; int &a=p.to; 
+    
+    while(!dkq.empty()) { 
+        p=dkq.top(); dkq.pop(); 
         
         // here can be added with special judges
-
-        for(int i=hp[a]; i!=-1; i=e[i].nx) if(d[e[i].to]==-1 || d[e[i].to]>d[a]+e[i].v) { 
-            d[e[i].to]=d[a]+e[i].v; 
-            q.push((pii){e[i].v, e[i].to}); 
+        
+        for(int i=eh[a]; i!=-1; i=eli[i].nx) if(d[eli[i].to]==-1 || d[eli[i].to]>d[a]+eli[i].v) { 
+            d[eli[i].to]=d[a]+eli[i].v; 
+            dkq.push(eli[i]); 
         } 
     } 
 
-    if(d[ed]==-1) return 0;  // there's no anyone path to the target. 
-    return 1; 
+    if(d[ed]==-1) { // there's no anyone path to the target. 
+        // No solution
+        
+        return; 
+    } 
+    // Answer
+    
 } 
 
 inline void init() { 
-    memset(hp, -1, sizeof(hp)); 
-    ec=0; 
+    memset(eh, -1, sizeof(eh)); 
+    ecnt=0; 
 } 
 
-
-
-int main() { 
-    int a, b, c; 
-
-    // input n, m
-
-    for(int i=1; i<=m; i++) { 
-        // input a, b, c
-        eadd(a, b, c); 
-        eadd(b, a, c);  // if solving bidirectional graph. 
-    } 
-
-    int s, ed; 
-    if(dijkstra(s)) { 
-
-        // print d[ed] as the shortest path. 
-
-    } 
-    else { 
-
-        // No Solution. 
-
-    } 
-
-    return 0; 
+inline void solve() { 
+    
+    // build the graph
+    
+    int st, ed; 
+    
+    dijkstra(st, ed); 
+    
 } 
+
