@@ -4,7 +4,8 @@ CASE=1; rla=''
 
 
 def solve() : 
-    
+    n=int(input())
+    print(n-1 if n<=3 else 2+(n&1))
 
 while True : 
     rla=sys.stdin.readline()

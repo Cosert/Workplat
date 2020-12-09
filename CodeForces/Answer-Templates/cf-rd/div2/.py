@@ -1,10 +1,9 @@
 import sys; import math; 
-
-TESTYPE=1
-
+CASE=1; rla=''
 
 
-def solve(rla) : 
+
+def solve() : 
     
 
 while True : 
@@ -12,9 +11,9 @@ while True :
     cases=1
     if not rla: break
     if (rla=='\n')|(rla=='') : continue
-    if TESTYPE==1 : cases=int(rla)
+    if CASE==1 : cases=int(rla)
     for cas in range(cases) : 
         
-        solve(rla)
+        solve()
     
 

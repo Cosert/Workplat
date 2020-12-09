@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
-using namespace std; std::string rla; 
-bool CASE=0; 
+using namespace std; 
+const bool TESTP=1, FILIN=0; std::string rda; 
 
 template<typename _tp> bool wi(_tp &_va){ _va=0; long double va=0.0, vd=0.1; bool _neg=0; auto _rd=getchar(); while(_rd<'0' || _rd>'9') { if(_rd=='-'){_neg=1; }else if(_rd==-1){return 0; } _rd=getchar(); } { while(_rd>='0' && _rd<='9') _va=_va*10 + (_tp)_rd-48, _rd=getchar(); } { if(_rd=='.') while(_rd=getchar(), '0'<=_rd && _rd<='9') va=va+((_tp)_rd-48)*vd, vd/=10; } _va=(1-_neg*2)*(_va+(_tp)va); return 1; } 
 template<typename _tp> void wo(_tp _var, int _nline=0){ static char _wri[64]; int _tpi=0; { if(_var<0)putchar('-'), _var*=-1; } do{ _wri[_tpi++] = (char)((_var%10)+48), _var/=10; } while(_var); { while(_tpi) putchar(_wri[--_tpi]); } if(_nline) putchar(_nline==1?'\n':' '); } 
@@ -24,19 +24,34 @@ const int inf=0x3f3f3f3f;
 const long long mod=1e9+7; 
 
 
-int n, m; 
+int n, m, k; 
 
-
-
-inline void solve(/*rla*/) { 
-    
+inline void solve(/*rda*/) { 
+    wi(n), wi(m); k=max(n, m); 
+    bitset<101> d(0); 
+    rep(i, n) { 
+        int a; wi(a); 
+        d[a]=1; 
+    } 
+    int ans=0; 
+    rep(i, m) { 
+        int a; wi(a); 
+        if(d[a]) ans++; 
+    } 
+    wln(ans); 
 } 
 
 int main() { 
+    if(FILIN) { 
+#ifdef LOCAL_TEST
+        char _tes[]=__FILE__; int _tl=(int)strlen(_tes); _tes[_tl-2]='i', _tes[_tl-1]='n'; (void)!freopen(_tes, "r", stdin); 
+#endif 
+} 
     
-    while(rstr(rla)) { 
-        int cases= CASE? (std::stoi(rla)) : 1; 
-        for(int cas=1; cas<=cases; cas++) { 
+    while(rstr(rda)) { 
+        int TCS= TESTP? (std::stoi(rda)) : 1; 
+        
+        for(int tcsn=1; tcsn<=TCS; tcsn++) { 
             
             solve(); 
             
