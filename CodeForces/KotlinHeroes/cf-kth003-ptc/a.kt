@@ -23,6 +23,10 @@ fun main() {
 fun solve() { 
     val li=rla.split(" ").map{it.toInt()}.toMutableList()
     li.sort()
-    println(li)
+    for(i in 0..2) { 
+        print("${li[3]-li[i]}")
+        if(i<2) print(' ')
+        else println()
+    } 
 } 
 
