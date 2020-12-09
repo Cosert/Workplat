@@ -1,1 +1,1 @@
-https://codeforces.com/contests/1338
+https://codeforces.com/contest/1338
