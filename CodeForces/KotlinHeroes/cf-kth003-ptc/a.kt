@@ -1,7 +1,7 @@
 import kotlin.math.* ; 
 private fun rd() = readLine()!!; private fun rds() = readLine()!!.split(" "); private fun rdi() = readLine()!!.toInt(); private fun rdl() = readLine()!!.toLong(); private fun rdd() = readLine()!!.toDouble(); private fun rdari() = readLine()!!.split(" ").map{it.toInt()} ; private fun rdarl() = readLine()!!.split(" ").map{it.toLong()} ; private fun rdard() = readLine()!!.split(" ").map{it.toDouble()} ; 
 var rla:String=""
-val CASE:Int=1
+val CASE:Int=0
 fun main() { 
     
     while(true) { 
@@ -21,6 +21,8 @@ fun main() {
 
 
 fun solve() { 
-    
+    val li=rla.split(" ").map{it.toInt()}.toMutableList()
+    li.sort()
+    println(li)
 } 
 
