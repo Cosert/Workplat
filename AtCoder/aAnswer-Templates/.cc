@@ -29,7 +29,7 @@ int n, m;
 
 
 inline void solve(/*rla*/) { 
-    
+    n=stoi(rla); 
 } 
 
 int main() { 

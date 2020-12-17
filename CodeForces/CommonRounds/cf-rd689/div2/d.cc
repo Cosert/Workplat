@@ -26,28 +26,39 @@ const int maxn=1e5;
 
 int n, m; 
 ll li[maxn|1], sum[maxn|1]={0}; 
+unordered_map<ll, bool> mp; 
+
+int bisc(int l, int r, ll v, ll a[]=li) { 
+    int p=0; while(l<=r) { 
+        int mid=(l+r)>>1; 
+        if(a[mid]<=v) p=mid, l=mid+1; 
+        else r=mid-1; 
+    } 
+    return p; 
+} 
+
+void init(int l=1, int r=n) { 
+    mp[sum[r]-sum[l-1]]=1; 
+    if(li[l]==li[r]) return; 
+    
+    ll v=(li[l]+li[r])>>1; 
+    int mid=bisc(1, n, v); 
+    init(l, mid), init(mid+1, r); 
+} 
 
 inline void solve(/*rla*/) { 
     wi(n), wi(m); 
+    mp.clear(); 
     
-    rep(i, n) { 
-        wi(li[i]); 
-        sum[i]=sum[i-1]+li[i]; 
-        if(i>1 && li[i]==li[i-1]) li[i-1]+=li[i], n--, i--; 
-    } 
+    rep(i, n) wi(li[i]); 
     sort(li+1, li+1+n); 
+    rep(i, n) sum[i]=sum[i-1]+li[i]; 
+    
+    init(); 
     
     rep(i, m) { 
-        ll a; wi(a); 
-        if(a>sum[n]) { psln("NO"); continue; } 
-        else if(a==sum[n]) { psln("YES"); continue; } 
-        
-        int l=1, r=n, mid=(r+l)/2; 
-        while(l!=r) { 
-            k=(li[l]+li[r])>>1; 
-            
-            
-        } 
+        int a; wi(a); 
+        psln(mp[a]?"Yes":"No"); 
     } 
 } 
 
