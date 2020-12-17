@@ -4,7 +4,8 @@ CASE=0; rla=''
 
 
 def solve() : 
-    n=int(rla)
+    a=[int(i) for i in rla.split()]
+    a.sort(); print(a[0])
 
 while True : 
     rla=sys.stdin.readline()

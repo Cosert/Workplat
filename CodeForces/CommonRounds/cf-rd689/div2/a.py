@@ -1,10 +1,12 @@
 import sys; import math; 
-CASE=0; rla=''
+CASE=1; rla=''
 
 
 
 def solve() : 
-    n=int(rla)
+    n, m=map(int, input().split())
+    for i in range(n) :print(chr(ord('a')+i%3), end='')
+    print()
 
 while True : 
     rla=sys.stdin.readline()

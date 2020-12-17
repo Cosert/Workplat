@@ -4,7 +4,12 @@ CASE=0; rla=''
 
 
 def solve() : 
-    n=int(rla)
+    n, m=map(int, rla.split())
+    la=[int(i) for i in input().split()]; lb=[int(i) for i in input.split()]
+    lth=min(n, m)
+    
+    for i in range(lth) : 
+        if la[]
 
 while True : 
     rla=sys.stdin.readline()
