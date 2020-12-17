@@ -23,43 +23,58 @@ void pstr(std::string _var, int _nline=0){ unsigned long long _len=_var.length()
 #define rc(_tp) _tp<<1|1
 const int inf=0x3f3f3f3f; 
 const long long mod=998244353; 
-const int maxn=1000; 
+const int maxn=300000; 
 
 int n, m; 
 int li[maxn|1];  // we use it to sort the elements for example. 
 
-const ll tainf=9223372036854775807; 
-ll trea[maxn|1]; 
-int lowb(int a) {return a&(-1*a); } 
-
-void taupd(int x, /*double/long long*/int a[]) while(x<=n) { 
-    trea[x]=a[x]; 
-    int lx=lowb(x); 
-    for(int i=1; i<lx; i<<=1) if(trea[x-i]>trea[x]) trea[x]=trea[x-i]; // if(trea[x-i]<trea[x]) trea[x]=trea[x-i]; 
-    x+=lowb(x); 
-} 
-
-ll taqry(int l, int r, /*double/long long*/int a[]) { 
-    ll ans=-1*tainf;  // for comparing maxium number
-    //ll ans=tainf;  // for comparing minium number
-    
-    while(r>=l) { 
-        if(a[r]>ans) ans=a[r]; 
-        //if(a[r]<ans) ans=a[r];  
-        r--; 
-        for(; r-lowb(r)>=l; r-=lowb(r)) if(trea[r]>ans) ans=trea[r]; // if(trea[r]<ans) ans=trea[r]; 
+struct segn { 
+    int l, r; 
+    int v; 
+} tli[maxn<<2|1]; 
+void tpushup(int i) { tli[i].v=tli[lc(i)].v^tli[rc(i)].v; } 
+void tbuild(int l=1, int r=n, int i=1, int a[]=li) { 
+    tli[i].l=l, tli[i].r=r; 
+    if(tli[i].l==tli[i].r) { 
+        tli[i].v=li[l]; 
+        return; 
     } 
-
-    return ans; 
+    int mid=(l+r)>>1; 
+    tbuild(l, mid, lc(i), a), tbuild(mid+1, r, rc(i), a), tpushup(i); 
 } 
-
-void tabuild(int r, /*double/long long*/int a* ) { 
-    memset(trea, 0, sizeof(trea)); 
-    for(int i=1; i<=r; i++) taupd(i, a); 
+void tadd(int p, int i=1, int a[]=li) { 
+    if(tli[i].l==tli[i].r && tli[i].l==p) { 
+        tli[i].v^=li[p]; 
+        return; 
+    } 
+    p<=((tli[i].l+tli[i].r)>>1)? tadd(p, lc(i), a) : tadd(p, rc(i), a); 
+    tpushup(i); 
+} 
+int tqry(int l, int r, int i=1, int a[]=li) { 
+    if(l<=tli[i].l && tli[i].r<=r) return tli[i].v; 
+    int mid=(tli[i].l+tli[i].r)>>1; 
+    if(r<=mid) return tqry(l, r, lc(i), a); 
+    else if(l>mid) return tqry(l, r, rc(i), a); 
+    return tqry(l, mid, lc(i), a)^tqry(mid+1, r, rc(i), a); 
 } 
 
 inline void solve(/*rla*/) { 
+    n=stoi(rla); 
+    wi(m); 
+    rep(i, n) wi(li[i]); 
+    tbuild(); 
     
+    rep(i, m) { 
+        int c, a, b; wi(c); 
+        if(c==1) { 
+            wi(a), wi(li[a]); 
+            tadd(a); 
+        } 
+        else { 
+            wi(a), wi(b); 
+            wln(tqry(a, b)); 
+        } 
+    } 
 } 
 
 int main() { 
