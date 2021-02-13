@@ -25,29 +25,23 @@ const long long mod=998244353;
 
 
 int n, m; 
-string s; 
-string mp="2020"; 
+
+
 
 inline void solve(/*rla*/) { 
-    int prog=0; 
-    wi(n); 
-    rstr(s); 
-    rep(i, n) { 
-        if(s[i-1]!=mp[prog]) break; 
-        else prog++; 
-        if(prog==4) { 
-            psln("YES"); 
-            return; 
-        } 
+    wi(n), wi(m); 
+    int a, b=m, c, ans=inf; 
+    
+    rep(i, 100) { 
+        c=b-m, a=n; 
+        if(b<2) c=2-b, b=2; 
+        while(a) a/=b, c++; 
+        if(c<ans) ans=c; 
+        if(n<b) break; 
+        else b++; 
     } 
-    for(int i=n-3+prog; i<=n; i++) { 
-        if(s[i-1]!=mp[prog]) { 
-            psln("NO"); 
-            return; 
-        } 
-        else prog++; 
-    } 
-    psln("YES"); 
+    
+    wln(ans); 
 } 
 
 int main() { 

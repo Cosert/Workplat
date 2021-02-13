@@ -20,34 +20,36 @@ void pstr(std::string _var, int _nline=0){ unsigned long long _len=_var.length()
 #define all(_tmp) _tmp.begin(),_tmp.end()
 #define rvall(_tmp) _tmp.rbegin(),_tmp.rend()
 
-const int inf=0x3f3f3f3f; 
-const long long mod=998244353; 
-
-
 int n, m; 
-string s; 
-string mp="2020"; 
+
+int la[4], lb[6]; 
 
 inline void solve(/*rla*/) { 
-    int prog=0; 
-    wi(n); 
-    rstr(s); 
-    rep(i, n) { 
-        if(s[i-1]!=mp[prog]) break; 
-        else prog++; 
-        if(prog==4) { 
-            psln("YES"); 
-            return; 
-        } 
-    } 
-    for(int i=n-3+prog; i<=n; i++) { 
-        if(s[i-1]!=mp[prog]) { 
+    rep(i, 3) wi(la[i]); 
+    rep(i, 5) wi(lb[i]); 
+    
+    rep(i, 3) {     
+        la[i]-=lb[i]; 
+        if(la[i]<0) { 
             psln("NO"); 
             return; 
         } 
-        else prog++; 
     } 
-    psln("YES"); 
+    
+    if(lb[4]>la[1]) { 
+        lb[4]-=la[1]; 
+        if(lb[4]>la[3]) { 
+            psln("NO"); 
+            return; 
+        } 
+        else la[3]-=lb[4]; 
+    } 
+    if(lb[5]>la[2]) { 
+        lb[5]-=la[2]; 
+        if(lb[5]>la[3]) psln("NO"); 
+        else psln("YES"); 
+    } 
+    else psln("YES"); 
 } 
 
 int main() { 

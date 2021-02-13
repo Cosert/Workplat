@@ -22,32 +22,26 @@ void pstr(std::string _var, int _nline=0){ unsigned long long _len=_var.length()
 
 const int inf=0x3f3f3f3f; 
 const long long mod=998244353; 
-
+const int maxn=100; 
 
 int n, m; 
-string s; 
-string mp="2020"; 
+
+int li[maxn|1]; 
 
 inline void solve(/*rla*/) { 
-    int prog=0; 
-    wi(n); 
-    rstr(s); 
+    wi(n), wi(m); 
+    bool flag=0; 
     rep(i, n) { 
-        if(s[i-1]!=mp[prog]) break; 
-        else prog++; 
-        if(prog==4) { 
-            psln("YES"); 
-            return; 
-        } 
+        wi(li[i]); 
+        if(li[i]>m) flag=1; 
     } 
-    for(int i=n-3+prog; i<=n; i++) { 
-        if(s[i-1]!=mp[prog]) { 
-            psln("NO"); 
-            return; 
-        } 
-        else prog++; 
+    if(!flag) { 
+        psln("YES"); 
+        return; 
     } 
-    psln("YES"); 
+    
+    sort(li+1, li+n+1); 
+    psln(li[1]+li[2]<=m ? "YES" : "NO"); 
 } 
 
 int main() { 

@@ -24,30 +24,23 @@ const int inf=0x3f3f3f3f;
 const long long mod=998244353; 
 
 
-int n, m; 
-string s; 
-string mp="2020"; 
+int n, m, k, x; 
+
+
 
 inline void solve(/*rla*/) { 
-    int prog=0; 
     wi(n); 
-    rstr(s); 
+    m=0, k=0, x=-1; 
     rep(i, n) { 
-        if(s[i-1]!=mp[prog]) break; 
-        else prog++; 
-        if(prog==4) { 
-            psln("YES"); 
-            return; 
+        int a; wi(a); 
+        if(x==-1 || x!=a) { 
+            m=max(k, m); 
+            k=1; 
+            x=a; 
         } 
+        else k++; 
     } 
-    for(int i=n-3+prog; i<=n; i++) { 
-        if(s[i-1]!=mp[prog]) { 
-            psln("NO"); 
-            return; 
-        } 
-        else prog++; 
-    } 
-    psln("YES"); 
+    wln(max(k, m)); 
 } 
 
 int main() { 

@@ -25,29 +25,21 @@ const long long mod=998244353;
 
 
 int n, m; 
-string s; 
-string mp="2020"; 
+
+int li[101]; 
 
 inline void solve(/*rla*/) { 
-    int prog=0; 
     wi(n); 
-    rstr(s); 
-    rep(i, n) { 
-        if(s[i-1]!=mp[prog]) break; 
-        else prog++; 
-        if(prog==4) { 
-            psln("YES"); 
-            return; 
-        } 
+    rep(i, n) wi(li[i]); 
+    sort(li+1, li+n+1); 
+    
+    int a=0, b=0; 
+    for(int i=n; i>=1; i--) { 
+        if(a>=b) b+=li[i]; 
+        else a+=li[i]; 
     } 
-    for(int i=n-3+prog; i<=n; i++) { 
-        if(s[i-1]!=mp[prog]) { 
-            psln("NO"); 
-            return; 
-        } 
-        else prog++; 
-    } 
-    psln("YES"); 
+    
+    psln(a==b? "YES" : "NO"); 
 } 
 
 int main() { 

@@ -25,29 +25,19 @@ const long long mod=998244353;
 
 
 int n, m; 
-string s; 
-string mp="2020"; 
+
+string qa="989", qb="0123456789"; 
 
 inline void solve(/*rla*/) { 
-    int prog=0; 
     wi(n); 
-    rstr(s); 
-    rep(i, n) { 
-        if(s[i-1]!=mp[prog]) break; 
-        else prog++; 
-        if(prog==4) { 
-            psln("YES"); 
-            return; 
-        } 
+    m=99999999; 
+    if(n<=3) pstr(qa.substr(0, n)); 
+    else { 
+        pstr(qa); 
+        n-=3; 
+        rep(i, n) putchar(qb[(i-1)%10]); 
     } 
-    for(int i=n-3+prog; i<=n; i++) { 
-        if(s[i-1]!=mp[prog]) { 
-            psln("NO"); 
-            return; 
-        } 
-        else prog++; 
-    } 
-    psln("YES"); 
+    putchar('\n'); 
 } 
 
 int main() { 

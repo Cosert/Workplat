@@ -20,32 +20,24 @@ void pstr(std::string _var, int _nline=0){ unsigned long long _len=_var.length()
 #define all(_tmp) _tmp.begin(),_tmp.end()
 #define rvall(_tmp) _tmp.rbegin(),_tmp.rend()
 
-const int inf=0x3f3f3f3f; 
-const long long mod=998244353; 
-
-
-int n, m; 
-string s; 
-string mp="2020"; 
+int n, m, k, x; 
 
 inline void solve(/*rla*/) { 
-    int prog=0; 
-    wi(n); 
-    rstr(s); 
-    rep(i, n) { 
-        if(s[i-1]!=mp[prog]) break; 
-        else prog++; 
-        if(prog==4) { 
-            psln("YES"); 
-            return; 
+    wi(n), wi(m), wi(k); 
+    x=1; 
+    while(x<k) { 
+        if(n%2==0) { 
+            n>>=1; 
+            x<<=1; 
         } 
-    } 
-    for(int i=n-3+prog; i<=n; i++) { 
-        if(s[i-1]!=mp[prog]) { 
+        else if(m%2==0) { 
+            m>>=1; 
+            x<<=1; 
+        } 
+        else { 
             psln("NO"); 
             return; 
         } 
-        else prog++; 
     } 
     psln("YES"); 
 } 

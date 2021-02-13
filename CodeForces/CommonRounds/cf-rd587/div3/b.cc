@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std; std::string rla; 
-bool CASE=1; 
+bool CASE=0; 
 
 template<typename _tp> bool wi(_tp &_va){ _va=0; long double va=0.0, vd=0.1; bool _neg=0; auto _rd=getchar(); while(_rd<'0' || _rd>'9') { if(_rd=='-'){_neg=1; }else if(_rd==-1){return 0; } _rd=getchar(); } { while(_rd>='0' && _rd<='9') _va=_va*10 + (_tp)_rd-48, _rd=getchar(); } { if(_rd=='.') while(_rd=getchar(), '0'<=_rd && _rd<='9') va=va+((_tp)_rd-48)*vd, vd/=10; } _va=(1-_neg*2)*(_va+(_tp)va); return 1; } 
 template<typename _tp> void wo(_tp _var, int _nline=0){ static char _wri[64]; int _tpi=0; { if(_var<0)putchar('-'), _var*=-1; } do{ _wri[_tpi++] = (char)((_var%10)+48), _var/=10; } while(_var); { while(_tpi) putchar(_wri[--_tpi]); } if(_nline) putchar(_nline==1?'\n':' '); } 
@@ -25,29 +25,18 @@ const long long mod=998244353;
 
 
 int n, m; 
-string s; 
-string mp="2020"; 
+
+pii li[1001]; 
 
 inline void solve(/*rla*/) { 
-    int prog=0; 
-    wi(n); 
-    rstr(s); 
-    rep(i, n) { 
-        if(s[i-1]!=mp[prog]) break; 
-        else prog++; 
-        if(prog==4) { 
-            psln("YES"); 
-            return; 
-        } 
-    } 
-    for(int i=n-3+prog; i<=n; i++) { 
-        if(s[i-1]!=mp[prog]) { 
-            psln("NO"); 
-            return; 
-        } 
-        else prog++; 
-    } 
-    psln("YES"); 
+    n=stoi(rla); 
+    rep(i, n) wi(li[i].first), li[i].second=i; 
+    sort(li+1, li+n+1); 
+    
+    int ans=1; 
+    for(int i=n-1, j=1; i>=1; i--, j++) ans+=li[i].first*j+1; 
+    wln(ans); 
+    for(int i=n; i>=1; i--) wo(li[i].second, 1+(i>1)); 
 } 
 
 int main() { 
