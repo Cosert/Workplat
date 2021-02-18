@@ -33,14 +33,10 @@ inline void solve(/*rla*/) {
     wi(m), wi(k); 
     
     rep(i, n) wi(li[i]); 
-    li[n+1]=k; 
-    rep(i, n) lx[i]=li[i+1]-li[i-1]-min(3, li[i+1]-li[i-1]), sum[i]=sum[i-1]+lx[i]; g
     
     rep(i, m) { 
         int a, b; wi(a), wi(b); 
-        if(a==b) wln(k-1); 
-        else if(b-a==1) wln(k-2+(li[a]==li[b])); 
-        else wln(sum[b]-sum[a]-lx[b]+li[a+1]+k-li[b-1]-2); 
+        wln(k+li[b]-li[a]-2*(b-a)-1); 
     } 
 } 
 

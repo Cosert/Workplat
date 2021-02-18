@@ -22,37 +22,33 @@ void pstr(std::string _var, int _nline=0){ unsigned long long _len=_var.length()
 
 const int inf=0x3f3f3f3f; 
 const long long mod=998244353; 
-const int maxn=1e6; 
+const int maxn=100; 
 
-ll n, m; 
+int n, m; 
 
-bitset<maxn|1> phi; int pri[maxn|1], pcnt=0; 
-void prin() { 
-    phi.set(); 
-    phi[1]=0; 
-    for(int i=2; i<=maxn; i++) { 
-        if(phi[i]) pri[++pcnt]=i; 
-        for(int j=1; j<=pcnt && pri[j]*i<=maxn; j++) { 
-            phi[pri[j]*i]=0; 
-            if(!(i%pri[j])) break; 
-        } 
-    } 
-} 
+int la[101], lb[101], sma[102]={0}, smb[102]={0}; 
 
 inline void solve(/*rla*/) { 
-    wi(n); 
     
-    for(int i=1; i<=int(1e5); i++) if(pri[i]-1>=n) { 
-        for(int j=i+1; j<=(int)1e5; j++) if(pri[j]-pri[i]>=n) { 
-            ll a=pri[i], b=a*pri[j]; 
-            wln(min(a*a*a, b)); 
-            return; 
-        } 
+    wi(n); sma[n+1]=0; 
+    rep(i, n) { 
+        wi(la[i]); 
+        sma[i]=sma[i-1]+la[i]; 
+        if(sma[n+1]<sma[i]) sma[n+1]=sma[i]; 
     } 
+    
+    wi(m); smb[m+1]=0; 
+    rep(i, m) { 
+        wi(lb[i]); 
+        smb[i]=smb[i-1]+lb[i]; 
+        if(smb[m+1]<smb[i]) smb[m+1]=smb[i]; 
+    } 
+    
+    wln(sma[n+1]+smb[m+1]); 
 } 
 
 int main() { 
-    prin(); 
+    
     while(rstr(rla)) { 
         int cases= CASE? (std::stoi(rla)) : 1; 
         for(int cas=1; cas<=cases; cas++) { 
