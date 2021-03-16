@@ -20,21 +20,14 @@ void pstr(std::string _var, int _nline=0){ unsigned long long _len=_var.length()
 #define all(_tmp) _tmp.begin(),_tmp.end()
 #define rvall(_tmp) _tmp.rbegin(),_tmp.rend()
 
-const int inf=0x3f3f3f3f; 
-const long long mod=998244353; 
-
-
-int n, m; 
-
-int la[301], lb[301]; 
-
 inline void solve(/*rla*/) { 
-    wi(n); 
-    rep(i, n) wi(la[i]); 
+    string s; rstr(s); 
+    for(int i=0, n=(int)s.length(); i<n; i++) { 
+        if(i&1) s[i]=(s[i]=='z')? 'y' : 'z'; 
+        else s[i]=(s[i]=='a')? 'b' : 'a'; 
+    } 
     
-    rep(i, (n>>1)+(n&1)) lb[2*i-1]=la[i]; 
-    for(int i=n, j=1; i>=(n>>1)+(n&1); i--, j++) lb[2*j]=la[i]; 
-    rep(i, n) wo(lb[i], 1+(i!=n)); 
+    psln(s); 
 } 
 
 int main() { 

@@ -26,15 +26,35 @@ const long long mod=998244353;
 
 int n, m; 
 
-int la[301], lb[301]; 
+
 
 inline void solve(/*rla*/) { 
-    wi(n); 
-    rep(i, n) wi(la[i]); 
+    wi(n), wi(m); 
+    int u=0, d=0, l=0, r=0; 
+    int ans=0; 
     
-    rep(i, (n>>1)+(n&1)) lb[2*i-1]=la[i]; 
-    for(int i=n, j=1; i>=(n>>1)+(n&1); i--, j++) lb[2*j]=la[i]; 
-    rep(i, n) wo(lb[i], 1+(i!=n)); 
+    string s; rstr(s); 
+    for(int len=s.length(), i=0; i<len; i++) { 
+        switch(s[i]) { 
+            case 'U': 
+                u++; 
+                break; 
+            case 'D': 
+                d++; 
+                break; 
+            case 'L': 
+                l++; 
+                break; 
+            case 'R': 
+                r++; 
+                break; 
+        } 
+    } 
+    
+    if(-d<=m && m<=u) ans++; 
+    if(-l<=n && n<=r) ans++; 
+    
+    psln(ans==2? "YES" : "NO"); 
 } 
 
 int main() { 

@@ -14,7 +14,7 @@ void pstr(std::string _var, int _nline=0){ unsigned long long _len=_var.length()
 #define ld long double
 #define ll long long
 #define ull unsigned long long
-#define pii pair<int, int>
+#define pll pair<ll, ll>
 
 #define rep(_tmp, _ti) for(int _tmp=1; _tmp<=(int)_ti; _tmp++)
 #define all(_tmp) _tmp.begin(),_tmp.end()
@@ -22,19 +22,26 @@ void pstr(std::string _var, int _nline=0){ unsigned long long _len=_var.length()
 
 const int inf=0x3f3f3f3f; 
 const long long mod=998244353; 
+const int maxn=1e5; 
 
+ll n, m, k; 
 
-int n, m; 
-
-int la[301], lb[301]; 
+pll li[maxn|1]; 
 
 inline void solve(/*rla*/) { 
-    wi(n); 
-    rep(i, n) wi(la[i]); 
+    wi(m), wi(k), wi(n); 
     
-    rep(i, (n>>1)+(n&1)) lb[2*i-1]=la[i]; 
-    for(int i=n, j=1; i>=(n>>1)+(n&1); i--, j++) lb[2*j]=la[i]; 
-    rep(i, n) wo(lb[i], 1+(i!=n)); 
+    rep(i, n) wi(li[i].first); 
+    rep(i, n) { 
+        wi(li[i].second); 
+        k-=li[i].first*(li[i].second/m+(li[i].second%m!=0)); 
+    } 
+    
+    rep(i, n) if(k+li[i].first>0) { 
+        puts("YES"); 
+        return; 
+    } 
+    puts("NO"); 
 } 
 
 int main() { 

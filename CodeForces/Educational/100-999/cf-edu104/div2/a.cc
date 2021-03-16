@@ -26,15 +26,27 @@ const long long mod=998244353;
 
 int n, m; 
 
-int la[301], lb[301]; 
+int li[101]; 
 
 inline void solve(/*rla*/) { 
     wi(n); 
-    rep(i, n) wi(la[i]); 
+    rep(i, n) wi(li[i]); 
     
-    rep(i, (n>>1)+(n&1)) lb[2*i-1]=la[i]; 
-    for(int i=n, j=1; i>=(n>>1)+(n&1); i--, j++) lb[2*j]=la[i]; 
-    rep(i, n) wo(lb[i], 1+(i!=n)); 
+    sort(li+1, li+n+1); 
+    
+    if(li[1]<li[2]) { 
+        wln(n-1); 
+        return; 
+    } 
+    else if(li[1]==li[n]) { 
+        wln(0); 
+        return; 
+    } 
+    for(int i=2; i<=n; i++) if(li[i]>li[i-1]) { 
+        i=i-1; 
+        wln(n-i); 
+        return; 
+    } 
 } 
 
 int main() { 
