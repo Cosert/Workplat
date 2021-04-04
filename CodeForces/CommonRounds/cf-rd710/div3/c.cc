@@ -23,26 +23,30 @@ void pstr(std::string _var, int _nline=0){ unsigned long long _len=_var.length()
 const int inf=0x3f3f3f3f; 
 const long long mod=998244353; 
 
-
-int n, m; 
-
-string lcstr(const string &a, const string &b) { 
-    int lena=a.length(), lenb=b.length(), lcsres=0; 
-    for(int i=0, lenc=0; i<lena; i++) { 
-        for(int j=0; j<lenb; j++) { 
+pair<int, int> lcstr(const string &a, const string &b) { 
+    int lena=(int)a.length(), lenb=(int)b.length(), l=0, r=-1; 
+    
+    int si=lena-1, sj=0; 
+    while(sj<lenb) { 
+        int cur=0; 
+        for(int i=si, j=sj; i<lena && j<lenb; i++, j++) { 
             if(a[i]==b[j]) { 
-                lenc++; 
-                lcsres=lenc>lcsres? lenc : lcsres; 
+                cur++; 
+                if(cur>r-l+1) r=i, l=r-cur+1; 
             } 
-            else lenc=0; 
-            i++
+            else cur=0; 
         } 
+        si? si-- : sj++; 
     } 
-    return lcsres; 
+    
+    return (pair<int, int>){l, r}; 
 } 
 
 inline void solve(/*rla*/) { 
-    
+    string a, b; 
+    rstr(a), rstr(b); 
+    pii t=lcstr(a, b); int res=t.second-t.first+1; 
+    wln(a.length()+b.length()-res*2); 
 } 
 
 int main() { 
