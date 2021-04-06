@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+std::string rla; 
+template<typename _tp> inline bool wi(_tp &_va){ _va=0; long double va=0.0, vd=0.1; bool _neg=0; auto _rd=getchar(); while(_rd<'0' || _rd>'9') { if(_rd=='-'){_neg=1; }else if(_rd==-1){return 0; } _rd=getchar(); } { while(_rd>='0' && _rd<='9') _va=_va*10 + (_tp)_rd-48, _rd=getchar(); } { if(_rd=='.') while(_rd=getchar(), '0'<=_rd && _rd<='9') va=va+((_tp)_rd-48)*vd, vd/=10; } _va=(1-_neg*2)*(_va+(_tp)va); return 1; } 
+template<typename _tp> inline void wo(_tp _var, int _nline=0){ static char _wri[64]; int _tpi=0; { if(_var<0)putchar('-'), _var*=-1; } do{ _wri[_tpi++] = (char)((_var%10)+48), _var/=10; } while(_var); { while(_tpi) putchar(_wri[--_tpi]); } if(_nline) putchar(_nline==1?'\n':' '); } 
+#define wln(_var) wo(_var, 1)
+#define wsp(_var) wo(_var, 2)
+inline bool rstr(std::string &_var, bool _ed=0){ std::string _tmp; auto _ch=getchar(); { while(_ch<=32) if(_ch==-1){return 0; }else{_ch=getchar(); } } { while(((_ch!=' ')|_ed)&&_ch!='\n'&&_ch>=0) _tmp+=(char)_ch, _ch=getchar(); } _var=_tmp; return 1; } 
+inline void pstr(std::string _var, int _nline=0){ unsigned long long _len=_var.length(), _it=0; { while(++_it<=_len) putchar(_var[_it-1]); } if(_nline) putchar(_nline<2?'\n':' '); } 
+#define psln(_var) pstr(_var, 1)
+#define pssp(_var) pstr(_var, 2)
+
+using namespace std; 
+
+#define ll long long
+#define pii std::pair<int, int>
+
+#define all(_var) (_var.begin(), _var.end())
+#define rvall(_var) (_var.rbegin(), _var.end())
+#define fir first
+#define sec second
+const int mod=1e9+7; 
+const int maxn=1e6; 
+
+int li[maxn|1], lx[maxn|1], ans[maxn|1], id[maxn|1]; 
+
+inline void solve() { 
+    //int n=std::stoi(rla); 
+    int n; wi(n); 
+    int cnt=0; 
+    
+    for(int i=1; i<=n; i++) wi(li[i]), id[li[i]]=i; 
+    for(int i=n, j; i>=1; i--) { 
+        if(!ans || lx[cnt]<li[i]) lx[++cnt]=li[i], ans[i]=cnt; 
+        else j=lower_bound(lx+1, lx+cnt+1, li[i])-lx, ans[i]=ans[id[lx[j]]], lx[j]=li[i]; 
+    } 
+    
+    wln(cnt); 
+    for(int i=1; i<=n; i++) wo(ans[i], 1+(i!=n)); 
+} 
+
+int main() { 
+    
+    
+    rstr(rla); 
+    for(int cas=1, cases=std::stoi(rla); cas<=cases; cas++)
+    { 
+        
+        solve(); 
+        
+    } 
+    
+    return 0; 
+} 
+

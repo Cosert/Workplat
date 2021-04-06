@@ -14,7 +14,7 @@ void pstr(std::string _var, int _nline=0){ unsigned long long _len=_var.length()
 #define ld long double
 #define ll long long
 #define ull unsigned long long
-#define pii pair<int, int>
+#define pii std::pair<int, int>
 
 #define rep(_tmp, _ti) for(int _tmp=1; _tmp<=(int)_ti; _tmp++)
 #define all(_tmp) _tmp.begin(),_tmp.end()
@@ -23,27 +23,24 @@ void pstr(std::string _var, int _nline=0){ unsigned long long _len=_var.length()
 const int inf=0x3f3f3f3f; 
 const long long mod=998244353; 
 
-
-int n, m; 
-
-bool p[3][6]={{0, 1, 1, 0, 0, 1}, {1, 0, 1, 0, 1, 0}, {1, 1, 0, 1, 0, 0}}; 
+int li[101]; 
 
 inline void solve(/*rla*/) { 
-    string s; rstr(s); 
+    int n; wi(n); 
+    vector<int> ans1, ans2; 
     
-    for(int j=0; j<6; j++) { 
-        int x=0; 
-        for(int i=0, n=(int)s.length(); i<n; i++) { 
-            x+=p[s[i]-'A'][j]? 1 : -1; 
-            if(x<0) break; 
-        } 
-        
-        if(!x) { 
-            puts("YES"); 
-            return; 
-        } 
+    rep(i, n) wi(li[i]); 
+    
+    sort(li+1, li+n+1); 
+    
+    rep(i, n) { 
+        if(!ans1.size() || ans1.back()!=li[i]) ans1.emplace_back(li[i]); 
+        else ans2.emplace_back(li[i]); 
     } 
-    puts("NO"); 
+    
+    for(auto &i: ans1) wsp(i); 
+    for(auto &i: ans2) wsp(i); 
+    putchar('\n'); 
 } 
 
 int main() { 

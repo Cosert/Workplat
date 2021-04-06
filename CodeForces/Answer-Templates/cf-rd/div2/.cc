@@ -14,7 +14,7 @@ void pstr(std::string _var, int _nline=0){ unsigned long long _len=_var.length()
 #define ld long double
 #define ll long long
 #define ull unsigned long long
-#define pii pair<int, int>
+#define pii std::pair<int, int>
 
 #define rep(_tmp, _ti) for(int _tmp=1; _tmp<=(int)_ti; _tmp++)
 #define all(_tmp) _tmp.begin(),_tmp.end()
@@ -23,8 +23,6 @@ void pstr(std::string _var, int _nline=0){ unsigned long long _len=_var.length()
 const int inf=0x3f3f3f3f; 
 const long long mod=998244353; 
 
-
-int n, m; 
 
 
 

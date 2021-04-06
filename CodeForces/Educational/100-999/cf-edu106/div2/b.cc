@@ -14,7 +14,7 @@ void pstr(std::string _var, int _nline=0){ unsigned long long _len=_var.length()
 #define ld long double
 #define ll long long
 #define ull unsigned long long
-#define pii pair<int, int>
+#define pii std::pair<int, int>
 
 #define rep(_tmp, _ti) for(int _tmp=1; _tmp<=(int)_ti; _tmp++)
 #define all(_tmp) _tmp.begin(),_tmp.end()
@@ -24,26 +24,12 @@ const int inf=0x3f3f3f3f;
 const long long mod=998244353; 
 
 
-int n, m; 
 
-bool p[3][6]={{0, 1, 1, 0, 0, 1}, {1, 0, 1, 0, 1, 0}, {1, 1, 0, 1, 0, 0}}; 
 
 inline void solve(/*rla*/) { 
     string s; rstr(s); 
-    
-    for(int j=0; j<6; j++) { 
-        int x=0; 
-        for(int i=0, n=(int)s.length(); i<n; i++) { 
-            x+=p[s[i]-'A'][j]? 1 : -1; 
-            if(x<0) break; 
-        } 
-        
-        if(!x) { 
-            puts("YES"); 
-            return; 
-        } 
-    } 
-    puts("NO"); 
+    int a=(int)s.find("11"), b=(int)s.rfind("00"); 
+    puts((a!=-1 && b!=-1 && a<b)? "NO" : "YES"); 
 } 
 
 int main() { 

@@ -23,27 +23,12 @@ void pstr(std::string _var, int _nline=0){ unsigned long long _len=_var.length()
 const int inf=0x3f3f3f3f; 
 const long long mod=998244353; 
 
-
-int n, m; 
-
-bool p[3][6]={{0, 1, 1, 0, 0, 1}, {1, 0, 1, 0, 1, 0}, {1, 1, 0, 1, 0, 0}}; 
-
 inline void solve(/*rla*/) { 
-    string s; rstr(s); 
+    ll n, m, k; 
+    wi(n), wi(m), wi(k); k--; 
+    ll a=k/n, b=k%n; 
     
-    for(int j=0; j<6; j++) { 
-        int x=0; 
-        for(int i=0, n=(int)s.length(); i<n; i++) { 
-            x+=p[s[i]-'A'][j]? 1 : -1; 
-            if(x<0) break; 
-        } 
-        
-        if(!x) { 
-            puts("YES"); 
-            return; 
-        } 
-    } 
-    puts("NO"); 
+    wln(b*m+a+1); 
 } 
 
 int main() { 
