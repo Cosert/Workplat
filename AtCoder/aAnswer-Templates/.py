@@ -1,22 +1,27 @@
+TYP=0
 import sys; import math; 
-rdl=sys.stdin.buffer.readline
-CASE=0; rla=''
 
 
 
 def solve() : 
-    n=int(rla)
-
-while True : 
-    rla=sys.stdin.buffer.readline()
-    cases=1
-    if not rla: break
-    if (rla=='\n')|(rla=='') : continue
-    if CASE==1 : cases=int(rla)
-    for cas in range(cases) : 
-        
-        solve()
     
+    return 1
+
+def solvetp(TYP, T=-1) : 
+    if TYP==1 : 
+        cases=T
+        if cases==-1 : cases=int(input())
+        for cas in range(cases) : 
+            putcas(cas+1, ' ')
+            
+            solve()
+    elif TYP==2 : 
+        while True : 
+            if solve()==0 : break
+            
+    else : solve()
 
 
+
+solvetp(TYP)
 
