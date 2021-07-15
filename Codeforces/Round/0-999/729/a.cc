@@ -19,19 +19,16 @@ using namespace std; using ld=long double; using ll=long long; using ull=unsigne
 #define all(_tmp) _tmp.begin(),_tmp.end()
 #define rvall(_tmp) _tmp.rbegin(),_tmp.rend()
 
-int maxn=2e5; 
 
-int ll[maxn|1], lr[maxn|1]; 
 
 inline bool solve() { 
-    int n, nl, nr; 
-    wi(n), wi(nl), wi(nr); 
+    int n, ans=0; wi(n); 
+    rep(i, n<<1) { 
+        int a; wi(a); 
+        ans+=-2*(a&1)+1; 
+    } 
     
-    rep(i, nl) wi(ll[i]); 
-    rep(i, nr) wi(lr[i]); 
-    
-    
-    
+    psln(ans? "No" : "Yes"); 
     return 1; 
 } 
 

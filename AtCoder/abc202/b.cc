@@ -1,5 +1,5 @@
 const int TYP=
-1
+0
 ; inline void solvetp(int typ, int T=-1); 
 #include<bits/stdc++.h>
 
@@ -19,19 +19,16 @@ using namespace std; using ld=long double; using ll=long long; using ull=unsigne
 #define all(_tmp) _tmp.begin(),_tmp.end()
 #define rvall(_tmp) _tmp.rbegin(),_tmp.rend()
 
-int maxn=2e5; 
 
-int ll[maxn|1], lr[maxn|1]; 
 
 inline bool solve() { 
-    int n, nl, nr; 
-    wi(n), wi(nl), wi(nr); 
-    
-    rep(i, nl) wi(ll[i]); 
-    rep(i, nr) wi(lr[i]); 
-    
-    
-    
+    string s; wstr(s); 
+    for(int i=s.length(); i>0; i--) { 
+        if(s[i-1]=='6') putchar('9'); 
+        else if(s[i-1]=='9') putchar('6'); 
+        else putchar(s[i-1]); 
+    } 
+    putchar('\n'); 
     return 1; 
 } 
 

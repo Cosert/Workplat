@@ -1,5 +1,5 @@
 const int TYP=
-1
+0
 ; inline void solvetp(int typ, int T=-1); 
 #include<bits/stdc++.h>
 
@@ -19,18 +19,38 @@ using namespace std; using ld=long double; using ll=long long; using ull=unsigne
 #define all(_tmp) _tmp.begin(),_tmp.end()
 #define rvall(_tmp) _tmp.rbegin(),_tmp.rend()
 
-int maxn=2e5; 
+const int maxn=1e5; 
 
-int ll[maxn|1], lr[maxn|1]; 
+pii la[maxn|1], lb[maxn|1]; 
+int mp[maxn|1]; 
 
 inline bool solve() { 
-    int n, nl, nr; 
-    wi(n), wi(nl), wi(nr); 
+    memset(mp, 0, sizeof(mp)); 
     
-    rep(i, nl) wi(ll[i]); 
-    rep(i, nr) wi(lr[i]); 
+    int n, na=0; wi(n); 
+    rep(i, n) { 
+        int a; wi(a); 
+        if(!na || la[na].first!=a) la[++na]=(pii){a, 1}; 
+        else la[na].second++; 
+    } 
+    rep(i, n) wi(lb[i].first), lb[i].second=i; 
+    rep(i, n) { 
+        int c; wi(c); 
+        mp[c]++; 
+    } 
     
+    sort(la+1, la+na+1); sort(lb+1, lb+n+1); 
     
+    ll ans=0; 
+    for(int i=1, j=1; i<=na; i++) { 
+        for(; j<=n; j++) { 
+            if(la[i].first<lb[j].first) break; 
+            if(la[i].first==lb[j].first) ans+=la[i].second*mp[lb[j].second]; 
+            if(j==n) break; 
+        } 
+    } 
+    
+    wln(ans); 
     
     return 1; 
 } 

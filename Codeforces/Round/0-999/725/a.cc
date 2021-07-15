@@ -19,19 +19,19 @@ using namespace std; using ld=long double; using ll=long long; using ull=unsigne
 #define all(_tmp) _tmp.begin(),_tmp.end()
 #define rvall(_tmp) _tmp.rbegin(),_tmp.rend()
 
-int maxn=2e5; 
 
-int ll[maxn|1], lr[maxn|1]; 
 
 inline bool solve() { 
-    int n, nl, nr; 
-    wi(n), wi(nl), wi(nr); 
+    int n; wi(n); 
+    pii mx=(pii){-1, 0}, mi=(pii){1145141919, 0}; 
+    int li[n+1]; rep(i, n) { 
+        wi(li[i]); 
+        if(mx.first<li[i]) mx=(pii){li[i], i}; 
+        if(mi.first>li[i]) mi=(pii){li[i], i}; 
+    } 
     
-    rep(i, nl) wi(ll[i]); 
-    rep(i, nr) wi(lr[i]); 
-    
-    
-    
+    int a=min(mi.second, mx.second), b=max(mi.second, mx.second); 
+    wln(min(min(b, n-a+1), a+n-b+1)); 
     return 1; 
 } 
 

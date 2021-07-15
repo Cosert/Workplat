@@ -19,18 +19,41 @@ using namespace std; using ld=long double; using ll=long long; using ull=unsigne
 #define all(_tmp) _tmp.begin(),_tmp.end()
 #define rvall(_tmp) _tmp.rbegin(),_tmp.rend()
 
-int maxn=2e5; 
+const int maxn=4e5; 
 
-int ll[maxn|1], lr[maxn|1]; 
+int li[maxn|1]; 
 
 inline bool solve() { 
-    int n, nl, nr; 
-    wi(n), wi(nl), wi(nr); 
+    int n;  wi(n); 
+    rep(i, n) wi(li[i]); 
     
-    rep(i, nl) wi(ll[i]); 
-    rep(i, nr) wi(lr[i]); 
+    ll ans=0; 
     
+    if(n==1) { 
+        wln(li[1]); 
+        return 1; 
+    } 
     
+    rep(i, n) { 
+        int t=0; 
+        if(i==1 || (i>1 && li[i]>li[i-1])) t++; 
+        if(i==n || (i<n && li[i]>li[i+1])) t++; 
+        if(t==2) { 
+            //cout<<"t "<<i<<endl; 
+            
+            if(i==1) t=li[2]; 
+            else if(i==n) t=li[n-1]; 
+            else t=max(li[i-1], li[i+1]); 
+            ans+=abs(li[i]-t); 
+            li[i]=t; 
+        } 
+    } 
+    
+    ans+=li[1]; 
+    for(int i=2; i<=n; i++) ans+=abs(li[i]-li[i-1]); 
+    ans+=li[n]; 
+    
+    wln(ans); 
     
     return 1; 
 } 

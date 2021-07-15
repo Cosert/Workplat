@@ -19,18 +19,39 @@ using namespace std; using ld=long double; using ll=long long; using ull=unsigne
 #define all(_tmp) _tmp.begin(),_tmp.end()
 #define rvall(_tmp) _tmp.rbegin(),_tmp.rend()
 
-int maxn=2e5; 
-
-int ll[maxn|1], lr[maxn|1]; 
+string mp[]={"RW", "WR"}; 
 
 inline bool solve() { 
-    int n, nl, nr; 
-    wi(n), wi(nl), wi(nr); 
+    int n, m; wi(n), wi(m); 
+    string g[50]; 
+    rep(i, n) wstr(g[i-1]); 
     
-    rep(i, nl) wi(ll[i]); 
-    rep(i, nr) wi(lr[i]); 
+    int fa=2; 
+    for(int i=0; i<n; i++) { 
+        for(int j=0; j<m; j++) if(g[i][j]!='.' && g[i][j]!=mp[i&1][j&1]) { 
+            fa--; 
+            break; 
+        } 
+        if(fa<2) break; 
+    } 
     
+    if(fa<2) for(int i=0; i<n; i++) { 
+        for(int j=0; j<m; j++) if(g[i][j]!='.' && g[i][j]!=mp[!(i&1)][j&1]) { 
+            fa=0; 
+            break; 
+        } 
+        if(fa<1) break; 
+    } 
     
+    if(!fa) psln("NO"); 
+    else { 
+        psln("YES"); 
+        
+        for(int i=0; i<n; i++) { 
+            for(int j=0; j<m; j++) putchar(mp[fa==2? (i&1) : (!(i&1))][j&1]); 
+            putchar('\n'); 
+        } 
+    } 
     
     return 1; 
 } 
